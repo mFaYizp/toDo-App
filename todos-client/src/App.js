@@ -5,21 +5,18 @@ import ListItem from "./components/ListItem";
 const App = () => {
   const [tasks, setTasks] = useState(null);
   const userEmail = "user2@example.com";
-  
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const res = await fetch(`http://localhost:3500/todos/${userEmail}`);
-        const json = await res.json();
-        setTasks(json);
-        console.log(json);
-      } catch (error) {
-        console.log(error);
-      }
-    };
 
-    getData();
-  });
+  const getData = async () => {
+    try {
+      const res = await fetch(`http://localhost:3500/todos/${userEmail}`);
+      const json = await res.json();
+      setTasks(json);
+      console.log(json);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() =>{ getData()}, []);
   console.log(tasks);
 
   const sortedTasks = tasks?.sort(
@@ -28,9 +25,9 @@ const App = () => {
 
   return (
     <div className="app">
-      <ListHeader listName={"🏝️ Holiday tick list"} />
+      <ListHeader listName={"🏝️ Holiday tick list"} getData={getData} />
       {sortedTasks?.map((item) => (
-      <ListItem key={item.id} task={item} />
+        <ListItem key={item.id} task={item} getData={getData} />
       ))}
     </div>
   );

@@ -15,7 +15,6 @@ const App = () => {
       const res = await fetch(`http://localhost:3500/todos/${userEmail}`);
       const json = await res.json();
       setTasks(json);
-      console.log(json);
     } catch (error) {
       console.log(error);
     }
@@ -25,7 +24,6 @@ const App = () => {
       getData();
     }
   }, []);
-  console.log(tasks);
 
   const sortedTasks = tasks?.sort(
     (a, b) => new Date(a.date) - new Date(b.date)

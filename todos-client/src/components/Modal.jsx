@@ -23,7 +23,6 @@ const Modal = ({ mode, setShowModal, getData, task }) => {
       );
 
       if (response.status === 200) {
-        console.log("Worked");
         setShowModal(false);
         getData();
       }
@@ -35,7 +34,6 @@ const Modal = ({ mode, setShowModal, getData, task }) => {
   const editData = async (e) => {
     e.preventDefault();
     try {
-      console.log(process.env.REACT_APP_SERVER_URL);
       const response = await fetch(
         `${process.env.REACT_APP_SERVER_URL}/todos/${task.id}`,
         {
@@ -46,7 +44,6 @@ const Modal = ({ mode, setShowModal, getData, task }) => {
       );
 
       if (response.status === 200) {
-        console.log("Worked");
         setShowModal(false);
         getData();
       }
@@ -57,7 +54,6 @@ const Modal = ({ mode, setShowModal, getData, task }) => {
 
   const handleChange = (e) => {
     e.preventDefault();
-    console.log("changing");
     const { name, value } = e.target;
 
     setData((data) => ({
@@ -65,7 +61,6 @@ const Modal = ({ mode, setShowModal, getData, task }) => {
       [name]: value,
     }));
 
-    console.log(data);
   };
   return (
     <div className="overlay">

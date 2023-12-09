@@ -2,7 +2,9 @@ import React from 'react'
 
 const ProgressBar = () => {
   return (
-    <div></div>
+    <div className='outer-bar'>
+      <div className="inner-bar"></div>
+    </div>
   )
 }
 

@@ -3,7 +3,7 @@ import React from "react";
 const TickIcon = () => {
   return (
     <svg
-    className="tick"
+      className="tick"
       xmlns="http://www.w3.org/2000/svg"
       width="25"
       height="25"
